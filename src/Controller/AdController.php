@@ -23,7 +23,7 @@ class AdController extends AbstractController
     public function index(AdRepository $rep)
     {
         $ads = $rep->findAll();
-
+        
         return $this->render('ad/index.html.twig', [
             'ads' => $ads
         ]);
@@ -41,7 +41,8 @@ class AdController extends AbstractController
         $form = $this->createForm(AdType::class,$ad);
 
         $form->handleRequest($request);
-
+        
+        dump($ad->getImages());
         if($form->isSubmitted() && $form->isValid())
         {   
             foreach($ad->getImages() as $image){
@@ -77,7 +78,7 @@ class AdController extends AbstractController
         $form = $this->createForm(AdType::class,$ad);
 
         $form->handleRequest($request);
-
+        
         if($form->isSubmitted() && $form->isValid())
         {   
             foreach($ad->getImages() as $image){
@@ -111,6 +112,7 @@ class AdController extends AbstractController
      */
     public function show(Ad $ad)
     {
+        dump($ad);
         return $this->render('ad/show.html.twig', [
             'ad' => $ad
         ]);
