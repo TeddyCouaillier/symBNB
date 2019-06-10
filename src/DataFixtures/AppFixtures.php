@@ -7,6 +7,7 @@ use Faker\Factory;
 use App\Entity\Role;
 use App\Entity\User;
 use App\Entity\Image;
+use App\Entity\Booking;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -49,8 +50,8 @@ class AppFixtures extends Fixture
         {
             $user = new User();
 
-            $genre = $faker->randomElement($genres);
-            $picture = 'https://randomuser.me/api/portraits/';
+            $genre    = $faker->randomElement($genres);
+            $picture  = 'https://randomuser.me/api/portraits/';
             $picture .= ($genre == 'male' ? 'men/' : 'women/') . mt_rand(1,99) . '.jpg';
 
             $user->setFirstName($faker->firstname($genre))
@@ -73,7 +74,7 @@ class AppFixtures extends Fixture
             $user = $users[mt_rand(0,count($users)-1)];
 
             $ad->setTitle($faker->sentence())
-               ->setCoverImage($faker->imageUrl(1000,350))
+               ->setCoverImage('http://lorempixel.com/1000/350/?'.mt_rand(1,10000))
                ->setIntroduction($faker->paragraph(2))
                ->setContent('<p>' . join('</p><p>',$faker->paragraphs(5)) . '</p>')
                ->setPrice(mt_rand(40,200))
@@ -84,11 +85,35 @@ class AppFixtures extends Fixture
             {
                 $image = new Image();
 
-                $image->setUrl($faker->imageUrl())
+                $image->setUrl('http://lorempixel.com/600/650/?'.mt_rand(1,10000))
                       ->setCaption($faker->sentence())
                       ->setAd($ad);
 
                 $manager->persist($image);
+            }
+
+            // Gestion des réservations
+            for($j = 0 ; $j < mt_rand(0,10) ; $j++)
+            {
+                $booking = new Booking();
+                
+                $createdAt = $faker->dateTimeBetween('-6 months');
+                $startDate = $faker->dateTimeBetween('-3 months');
+                $duration  = mt_rand(3,10);
+                $endDate   = (clone $startDate)->modify("+$duration days");
+                $amount    = $ad->getPrice() * $duration;
+                $booker    = $users[mt_rand(0, count($users) -1)];
+                $comment   = $faker->paragraph();
+
+                $booking->setCreatedAt($createdAt)
+                        ->setStartDate($startDate)
+                        ->setEndDate($endDate)
+                        ->setAmount($amount)
+                        ->setBooker($booker)
+                        ->setAd($ad)
+                        ->setComment($comment);
+
+                $manager->persist($booking);
             }
 
             $manager->persist($ad);

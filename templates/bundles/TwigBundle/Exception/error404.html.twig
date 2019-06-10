@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Page introuvable{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>La page que vous recherchez n'existe pas ou a été supprimé</h1>
+    <a href="{{ path('homepage') }}" class="btn btn-primary">Retour à l'accueil</a>
+    <a href="{{ path('ad_index') }}" class="btn btn-success">Nos annonces</a>
+</div>
+
+{% endblock %}
