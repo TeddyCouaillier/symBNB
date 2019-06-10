@@ -35,3 +35,7 @@ div.carousel-caption {
 .datepicker table tr td.disabled:hover{
     color: gray !important;
 }
+
+span.rating i{
+    color: #DF691A;
+}
