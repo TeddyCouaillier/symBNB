@@ -13,6 +13,12 @@ div.adtitle h1, div.adtitle p{
     text-shadow: 3px 3px 3px rgba(0,0,0,.5);
 }
 
+div.ad-title .btn {
+    margin-top: 2em;
+    font-size: 1.6em;
+    line-height: 1.6em;
+}
+
 div.carousel-caption {
     text-shadow: 3px 3px 3px rgba(0,0,0,.5);
 }
@@ -38,4 +44,11 @@ div.carousel-caption {
 
 span.rating i{
     color: #DF691A;
+}
+
+.alert a {
+    text-decoration: none;
+}
+.alert .btn {
+    color: white;
 }
