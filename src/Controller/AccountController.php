@@ -52,15 +52,21 @@ class AccountController extends AbstractController
         $form = $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);
-        dump($user);
+        
         if($form->isSubmitted() && $form->isValid())
         {
-            dump($user);
             $hash = $encoder->encodePassword($user, $user->getHash());
             $user->setHash($hash);
 
             $manager->persist($user);
             $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre inscription a été prise en compte'
+            );
+
+            return $this->redirectToRoute('account_login');
         }
 
         return $this->render('account/registration.html.twig',[

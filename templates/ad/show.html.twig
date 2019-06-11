@@ -22,9 +22,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 mb-3">
-            {{ ad.content | raw }}
-
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide mb-3" data-ride="carousel">
                 <ol class="carousel-indicators">
                     {% for image in ad.images %}
                     <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}"
@@ -50,6 +48,11 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
+            </div>
+            <hr>
+            {{ ad.content | raw }}
+            <div class="text-center">
+                <a href="{{ path('booking_create',{'slug': ad.slug }) }}" class="btn btn-primary text-center mt-2">Réserver</a>
             </div>
             <hr>
             {% if ad.comments|length > 0 %}
@@ -84,9 +87,10 @@
             {% endif %}
             
         </div>
-        <div class="col">
+        <div class="col-4">         
             {% set a = ad.author %}
-            <div class="row">
+            <div class="bg-primary p-2">
+            <div class="row mb-2">
                 <div class="col-3">
                     <a href="{{ path('user_show', {'slug': a.slug}) }}">
                         <img src="{{ a.picture }}" class="avatar avatar-medium" alt="Avatar de {{a.fullname}}">
@@ -94,12 +98,15 @@
                 </div>
                 <div class="col">
                     <a href="{{ path('user_show', {'slug': a.slug}) }}">
-                        <h3>{{a.fullname}}</h3>
+                        <h3 class="text-info">{{a.fullname}}</h3>
                     </a>
-                    <span class="badge badge-primary">{{ a.ads | length }} annonces</span>
+                    <span class="badge badge-info text-dark">{{ a.ads | length }} annonces</span>
                 </div>
             </div>
+            <hr class="border-info">
             {{ a.description | raw }}
+            </div>
+            <a href="{{ path('user_show',{'slug': a.slug }) }}" class="btn btn-primary mt-2 d-block">En savoir plus</a>
         </div>
     </div>
 </div>
