@@ -11,16 +11,16 @@
 
     <div class="row">
             <div class="col">
-                <div class="alert alert-dark">
+                <div class="alert alert-light shadow">
                     <h2 class="alert-heading">Informations générales</h2>
                     <hr>
-                    {{ form_row(form.firstname) }}
-                    {{ form_row(form.lastname) }}
+                    {{ form_row(form.firstName) }}
+                    {{ form_row(form.lastName) }}
                     {{ form_row(form.email) }}
                     {{ form_row(form.picture) }}
                 </div>
                 
-                <div class="alert alert-dark">
+                <div class="alert alert-info shadow">
                     <h2 class="alert-heading">Mot de passe</h2>
                     <hr>
                     {{ form_row(form.hash) }}
@@ -29,19 +29,20 @@
             </div>
             <div class="col">
                 
-                <div class="alert alert-dark">
+                <div class="alert shadow alert-light">
                     <h2 class="alert-heading">Détails</h2>
                     <hr>
                     {{ form_row(form.introduction) }}
                     {{ form_row(form.description) }}
 
                     <hr>
-
+                    
+                </div>
+                <div class="mt-4 text-center">
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-check"></i>
                         Confirmer l'inscription
                     </button>
-                    
                 </div>
             </div>
         </div>

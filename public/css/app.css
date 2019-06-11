@@ -36,6 +36,10 @@ div.carousel-caption {
     max-width: 64px;
     max-height: 64px;
 }
+.avatar-micro{
+    max-width: 22px;
+    max-height: 22px;
+}
 
 .datepicker table tr td.disabled, 
 .datepicker table tr td.disabled:hover{
@@ -43,7 +47,7 @@ div.carousel-caption {
 }
 
 span.rating i{
-    color: #DF691A;
+    color: #75CAEB;
 }
 
 .alert a {

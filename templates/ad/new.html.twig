@@ -12,15 +12,14 @@
 
         <div class="row">
             <div class="col">
-                <div class="alert alert-dark">
+                <div class="shadow p-3 my-4">
                     <h2>Informations générales</h2>
                     <hr>
                     {{ form_row(form.title) }}
-                    {{ form_row(form.slug) }}
                     {{ form_row(form.price) }}
                     {{ form_row(form.rooms) }}
                 </div>
-                <div class="alert alert-dark">
+                <div class="shadow p-3 my-4">
                     <h2>Détails de l'annonce</h2>
                     <hr>
                     {{ form_row(form.introduction) }}
@@ -28,7 +27,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="alert alert-dark">
+                <div class="shadow p-3 my-4">
                     <h2>Images de l'annonce</h2>
                     <hr>
                     {{ form_row(form.coverImage) }}
@@ -37,8 +36,8 @@
             </div>
         </div>
 
-        <div class="alert alert-primary clearfix">
-            <h2 class="alert-heading">Sauvegarder mon annonce</h2>
+        <div class="bg-primary p-3 clearfix">
+            <h2>Sauvegarder mon annonce</h2>
             <p>Vous êtes sur le point de créer votre annonce</p>
             <button type="submit" class="btn btn-primary float-right">
             <i class="fas fa-check"></i>
