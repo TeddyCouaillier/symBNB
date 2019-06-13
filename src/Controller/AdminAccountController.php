@@ -9,8 +9,9 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class AdminAccountController extends AbstractController
 {
     /**
+     * Permet de se connecter à l'administration
      * @Route("/admin/login", name="admin_account_login")
-     * @var AuthenticationUtils $utils
+     * @param AuthenticationUtils $utils
      * @return Response
      */
     public function login(AuthenticationUtils $utils)
@@ -24,6 +25,7 @@ class AdminAccountController extends AbstractController
     }
 
     /**
+     * Permet de se deconnecter de l'administration
      * @Route("/admin/logout", name="admin_account_logout")
      * @return void
      */

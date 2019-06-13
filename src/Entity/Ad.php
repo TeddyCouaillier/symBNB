@@ -345,7 +345,6 @@ class Ad
 
     /**
      * Récupere la moyenne globale des notes d'une annonce
-     *
      * @return float
      */
     public function getAvgRatings()
@@ -359,7 +358,6 @@ class Ad
 
     /**
      * Récupere le commentaire ou non d'un auteur par rapport à une annonce
-     *
      * @param User $author
      * @return Comment|null
      */

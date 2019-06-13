@@ -22,6 +22,7 @@ class AccountController extends AbstractController
     /**
      * Permet de se connecter
      * @Route("/login", name="account_login")
+     * @param AuthenticationUtils $utils
      * @return Response
      */
     public function login(AuthenticationUtils $utils)
@@ -43,6 +44,9 @@ class AccountController extends AbstractController
     /**
      * Permet de s'inscrire
      * @Route("/register", name="account_register")
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @param UserPasswordEncoderInterface $encoder
      * @return Response
      */
     public function register(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
@@ -78,6 +82,8 @@ class AccountController extends AbstractController
      * Permet de modifier le profil
      * @Route("/account/profile", name="account_profile")
      * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @param ObjectManager $manager
      * @return Response
      */
     public function profile(Request $request, ObjectManager $manager)
@@ -105,9 +111,12 @@ class AccountController extends AbstractController
      * Permet de modifier le mot de passe
      * @Route("/account/password-update", name="account_password")
      * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @param UserPasswordEncoderInterface $encoder
      * @return Response
      */
-    public function updatePassword(Request $request, UserPasswordEncoderInterface $encoder, ObjectManager $manager)
+    public function updatePassword(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
     {
         $passwordUpdate = new PasswordUpdate();
         $user = $this->getUser();

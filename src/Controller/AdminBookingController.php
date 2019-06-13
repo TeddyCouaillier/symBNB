@@ -13,7 +13,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminBookingController extends AbstractController
 {
     /**
+     * Permet d'afficher les réservations
      * @Route("/admin/bookings", name="admin_booking_index")
+     * @param BookingRepository $repo
+     * @return Response
      */
     public function index(BookingRepository $repo)
     {
@@ -25,6 +28,9 @@ class AdminBookingController extends AbstractController
     /**
      * Permet de modifier une réservation
      * @Route("/admin/bookings/{id}/edit", name="admin_booking_edit")
+     * @param Booking $booking
+     * @param Request $request
+     * @param ObjectManager $manager
      * @return Response
      */
     public function edit(Booking $booking, Request $request, ObjectManager $manager)
@@ -55,6 +61,8 @@ class AdminBookingController extends AbstractController
     /**
      * Permet de supprimer une réservation
      * @Route("/admin/bookings/{id}/delete", name="admin_booking_delete")
+     * @param Booking $booking
+     * @param ObjectManager $manager
      * @return Response
      */
     public function delete(Booking $booking, ObjectManager $manager)

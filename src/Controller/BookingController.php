@@ -16,8 +16,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BookingController extends AbstractController
 {
     /**
+     * Permet d'ajouter une réservation
      * @Route("/ads/{slug}/book", name="booking_create")
      * @IsGranted("ROLE_USER")
+     * @param Ad $ad
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @return Response
      */
     public function book(Ad $ad, Request $request, ObjectManager $manager)
     {

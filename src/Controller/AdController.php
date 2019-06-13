@@ -20,6 +20,7 @@ class AdController extends AbstractController
     /**
      * Affiche la liste des annonces
      * @Route("/ads", name="ad_index")
+     * @param AdRepository $rep 
      * @return Response
      */
     public function index(AdRepository $rep)
@@ -35,6 +36,8 @@ class AdController extends AbstractController
      * Permet de créer une annonce
      * @Route("/ads/news", name="ad_create")
      * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @param ObjectManager $manager
      * @return Response
      */
     public function create(Request $request, ObjectManager $manager)
@@ -77,6 +80,9 @@ class AdController extends AbstractController
      * Permet de modifier l'annonce
      * @Route("/ads/{slug}/edit", name="ad_edit")
      * @Security("is_granted('ROLE_USER') and user === ad.getAuthor()", message="Cette annonce ne vous appartient pas, vous ne pouvez pas la modifier")
+     * @param Ad $ad
+     * @param Request $request
+     * @param ObjectManager $manager
      * @return Response
      */
     public function edit(Ad $ad, Request $request, ObjectManager $manager)
@@ -114,6 +120,7 @@ class AdController extends AbstractController
     /**
      * Affiche une seule annonce
      * @Route("/ads/{slug}", name="ad_show")
+     * @param Ad $ad
      * @return Response
      */
     public function show(Ad $ad)

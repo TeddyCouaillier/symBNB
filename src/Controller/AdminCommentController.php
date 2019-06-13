@@ -13,7 +13,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminCommentController extends AbstractController
 {
     /**
+     * Permet d'afficher la liste des commentaires
      * @Route("/admin/comments", name="admin_comments_index")
+     * @param CommentRepository $repo
+     * @return Response
      */
     public function index(CommentRepository $repo)
     {

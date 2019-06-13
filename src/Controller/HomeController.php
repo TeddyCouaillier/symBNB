@@ -9,7 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     /**
+     * Affiche la page d'accueil
      * @Route("/", name="homepage")
+     * @return Response
      */
     public function home()
     {

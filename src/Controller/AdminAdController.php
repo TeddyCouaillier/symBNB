@@ -13,7 +13,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminAdController extends AbstractController
 {
     /**
+     * Permet d'afficher la liste des annonces
      * @Route("/admin/ads", name="admin_ad_index")
+     * @param AdRepository $repo
+     * @return Response
      */
     public function index(AdRepository $repo)
     {
@@ -26,6 +29,8 @@ class AdminAdController extends AbstractController
      * Permet d'editer l'annonce
      * @Route("/admin/ads/{id}/edit", name="admin_ad_edit")
      * @param Ad $ad
+     * @param Request $request
+     * @param ObjectManager $manager
      * @return Response
      */
     public function edit(Ad $ad, Request $request, ObjectManager $manager)
