@@ -75,7 +75,7 @@ class AppFixtures extends Fixture
             $user = $users[mt_rand(0,count($users)-1)];
 
             $ad->setTitle($faker->sentence())
-               ->setCoverImage('http://lorempixel.com/1000/350/?'.mt_rand(1,100000))
+               ->setCoverImage($faker->imageUrl())
                ->setIntroduction($faker->paragraph(2))
                ->setContent('<p>' . join('</p><p>',$faker->paragraphs(5)) . '</p>')
                ->setPrice(mt_rand(40,200))
@@ -86,7 +86,7 @@ class AppFixtures extends Fixture
             {
                 $image = new Image();
 
-                $image->setUrl('http://lorempixel.com/600/650/?'.mt_rand(1,100000))
+                $image->setUrl($faker->imageUrl())
                       ->setCaption($faker->sentence())
                       ->setAd($ad);
 
