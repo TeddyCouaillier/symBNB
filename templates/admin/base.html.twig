@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SymBNB - {% block title %}{% endblock %}</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'/>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
     {% block stylesheets %}{% endblock %}
 </head>
 
@@ -19,9 +18,7 @@
 
     {% include 'admin/partials/footer.html.twig' %}
 
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    {{ encore_entry_script_tags('js/app') }}
     {% block javascripts %}{% endblock %}
 </body>
 
