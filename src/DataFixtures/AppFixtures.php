@@ -75,7 +75,7 @@ class AppFixtures extends Fixture
             $user = $users[mt_rand(0,count($users)-1)];
 
             $ad->setTitle($faker->sentence())
-               ->setCoverImage($faker->imageUrl())
+               ->setCoverImage("https://picsum.photos/id/".mt_rand(1,1000)."/1000/600")
                ->setIntroduction($faker->paragraph(2))
                ->setContent('<p>' . join('</p><p>',$faker->paragraphs(5)) . '</p>')
                ->setPrice(mt_rand(40,200))
@@ -86,13 +86,13 @@ class AppFixtures extends Fixture
             {
                 $image = new Image();
 
-                $image->setUrl($faker->imageUrl())
+                $image->setUrl("https://picsum.photos/id/".mt_rand(1,1000)."/800/800")
                       ->setCaption($faker->sentence())
                       ->setAd($ad);
 
                 $manager->persist($image);
             }
-
+            
             // Gestion des réservations
             for($j = 0 ; $j < mt_rand(0,10) ; $j++)
             {
@@ -123,7 +123,7 @@ class AppFixtures extends Fixture
                             ->setRating(mt_rand(1,5))
                             ->setAuthor($booker)
                             ->setAd($ad);
-
+                    
                     $manager->persist($comment);
                 }
             }
